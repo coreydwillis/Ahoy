@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://k8g42n3t8wn7"]
+
+[ext_resource type="Texture2D" uid="uid://c8jt8gfyu88yi" path="res://assets/art/sprites/Ships/ship (4).png" id="1_rp718"]
+[ext_resource type="Script" uid="uid://ffwt5g65slq" path="res://scripts/player.gd" id="1_yewv4"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rp718"]
+radius = 24.0
+height = 110.0
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_yewv4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_rp718")
+
+[node name="boat_graphic" type="Sprite2D" parent="."]
+rotation = -1.5708
+texture = ExtResource("1_rp718")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
