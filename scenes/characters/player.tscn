@@ -8,6 +8,7 @@ radius = 24.0
 height = 110.0
 
 [node name="Player" type="CharacterBody2D"]
+motion_mode = 1
 script = ExtResource("1_yewv4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

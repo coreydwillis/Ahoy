@@ -1,8 +1,10 @@
 extends CharacterBody2D
 
+const GRAVITY = 9.8
 @export var init_speed = 100
 @export var boost_speed = 200
 @export var init_rotation_speed = 0.75
+@export var friction = 0.8
 var rotation_speed
 var speed
 var is_boosting: bool = false
@@ -16,7 +18,7 @@ func _ready() -> void:
 	rotation_speed = init_rotation_speed
 	boost_timer = $"../BoostTimer"
 
-func get_input():
+func get_input(delta):
 	if Input.is_action_just_pressed("drop_anchor"):
 		if anchor_dropped:
 			anchor_dropped = false
@@ -34,11 +36,12 @@ func get_input():
 	rotation_direction = Input.get_axis("steer_left", "steer_right")
 	# handle the forward momentum
 	## Need a new way to handle this later where I'm not using a "dummy" input for back because we don't want backwards movement with the boat
-	velocity = transform.x * Input.get_axis("dummy", "throttle") * speed
+	velocity = velocity.lerp((transform.x * Input.get_axis("dummy", "throttle") * speed), delta * friction)
 	# handle drop anchor
+	
 
 func _physics_process(delta):
-	get_input()
+	get_input(delta)
 	rotation += rotation_direction * rotation_speed * delta
 	move_and_slide()
 
