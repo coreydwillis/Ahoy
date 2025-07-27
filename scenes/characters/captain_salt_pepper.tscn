@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://biu01lbpfdhp5"]
+
+[ext_resource type="Texture2D" uid="uid://dhd1jup4ac62m" path="res://assets/art/sprites/captain_salt_pepper.png" id="1_6mmvo"]
+[ext_resource type="Script" uid="uid://chnt4ec1bareh" path="res://scenes/characters/captain_salt_pepper.gd" id="1_h5i81"]
+[ext_resource type="AudioStream" uid="uid://dqydhmp3x0mgf" path="res://assets/sound/sfx/nathan_scream1.wav" id="3_hnlyk"]
+
+[node name="StaticBody2D" type="StaticBody2D"]
+scale = Vector2(0.53, 0.53)
+script = ExtResource("1_h5i81")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+scale = Vector2(1.03, 1.03)
+polygon = PackedVector2Array(-5, -622, -324, -609, -467, -546, -518, -513, -533, -460, -531, -385, -565, -254, -539, -99, -524, -55, -428, -9, -402, -22, -341, -20, -302, 98, -297, 187, -309, 295, -216, 504, -174, 577, -93, 627, -10, 632, 73, 598, 182, 506, 241, 359, 297, 232, 283, 190, 315, 67, 353, 39, 378, -39, 449, -104, 488, -306, 546, -432, 568, -520, 442, -552, 237, -610, 128, -622)
+
+[node name="CaptainGraphic" type="Sprite2D" parent="."]
+texture = ExtResource("1_6mmvo")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-5, -622, -324, -609, -467, -546, -518, -513, -533, -460, -531, -385, -565, -254, -539, -99, -524, -55, -428, -9, -402, -22, -341, -20, -302, 98, -297, 187, -309, 295, -216, 504, -174, 577, -93, 627, -10, 632, 73, 598, 182, 506, 241, 359, 297, 232, 283, 190, 315, 67, 353, 39, 378, -39, 449, -104, 488, -306, 546, -432, 568, -520, 442, -552, 237, -610, 128, -622)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_hnlyk")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
